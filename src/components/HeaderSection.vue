@@ -17,9 +17,9 @@
         </div>
        
         <div v-if="HeaderToggleMode" class="flex gap-6  z-50 md:z-0  flex-col md:flex-row items-center">
-         <span class="text-center hover:text-slate-400 w-full md:w-auto cursor-pointer"> <a class="" href="#Features">Features</a></span>
-          <span  class="hover:text-slate-400 text-center w-full md:w-auto cursor-pointer"><a href="#work">How It Works</a></span>
-          <span  class="hover:text-slate-400 text-center w-full cursor-pointer md:w-auto"><a href="#community">Community</a></span>
+         <span class="text-center hover:text-slate-400 w-full md:w-auto cursor-pointer"><button @click="goTo('Features')">Features</button></span>
+          <span  class="hover:text-slate-400 text-center w-full md:w-auto cursor-pointer"><button @click="goTo('work')">How It Works</button></span>
+          <span  class="hover:text-slate-400 text-center w-full cursor-pointer md:w-auto">    <button @click="goTo('community')">Community</button></span>
         </div>
         <div v-if="HeaderToggleMode" class="flex gap-2 mt-2 md:mt-0 z-50 md:z-0 flex-col md:flex-row items-center">
           <button
@@ -27,7 +27,7 @@
           @click="LoginPagebtn"  class="px-4  py-2 md:py-2 w-full md:w-auto hover:bg-slate-400 rounded-xl">
             <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in
           </button>
-          <button :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4   py-2 md:py-2 w-full md:w-auto bg-blue-500/97 font-medium hover:bg-blue-600 rounded-xl">
+          <button :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4   py-2 md:py-2 w-full md:w-auto bg-blue-500 font-medium hover:bg-blue-600 rounded-xl">
             Get Started
           </button>
           <button
@@ -46,6 +46,25 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useThemeStore } from '../Store'
 import {router} from '../Router'
+import { useRouter, useRoute } from 'vue-router'
+
+
+const route = useRoute()
+
+const goTo = async (id) => {
+
+  if (route.path !== '/') {
+    await router.push('/')
+  }
+
+  // thora delay taake component mount ho jaye
+  setTimeout(() => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, 200)
+}
 const ThemeStore=useThemeStore()
 function toggleMode() {
     ThemeStore.setTheme(isDark.value)

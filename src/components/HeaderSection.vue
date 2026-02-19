@@ -22,14 +22,16 @@
           <span  class="hover:text-slate-400 text-center w-full cursor-pointer md:w-auto"><a href="#community">Community</a></span>
         </div>
         <div v-if="HeaderToggleMode" class="flex gap-2 mt-2 md:mt-0 z-50 md:z-0 flex-col md:flex-row items-center">
-          <button @click="LoginPagebtn"  class="px-4  py-2 md:py-2 w-full md:w-auto hover:bg-slate-400 rounded-xl">
+          <button
+           :class="ThemeStore.isDark ?  'hover:bg-slate-800' :'hover:bg-slate-200'" 
+          @click="LoginPagebtn"  class="px-4  py-2 md:py-2 w-full md:w-auto hover:bg-slate-400 rounded-xl">
             <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in
           </button>
           <button :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4   py-2 md:py-2 w-full md:w-auto bg-blue-500/97 font-medium hover:bg-blue-600 rounded-xl">
             Get Started
           </button>
           <button
-           :class="ThemeStore.isDark ?  'hover:bg-slate-900' :'hover:bg-slate-200'" 
+           :class="ThemeStore.isDark ?  'hover:bg-slate-800' :'hover:bg-slate-200'" 
           @click="toggleMode" class="px-2  py-2 md:py-1.5 w-full md:w-auto rounded-xl ">
             {{ isDark ? '🌙' : '☀️' }}
           </button>

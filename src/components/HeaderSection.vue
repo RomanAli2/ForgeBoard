@@ -7,33 +7,33 @@
       <nav class="p-7 flex-col md:flex-row flex gap-2  justify-between">
         <div class="flex justify-between">
         <div  class="flex gap-3 items-center">
-          <div :class="ThemeStore.isDark? ' text-black':' text-white'" class="rounded-2xl hover:bg-blue-600 cursor-pointer bg-blue-500/95 px-2.5 py-1 text-2xl font-bold">
+          <div :class="ThemeStore.isDark? ' text-black':' text-white'" class="rounded-2xl hover:bg-emerald-600 cursor-pointer bg-emerald-500/95 px-2.5 py-1 text-2xl font-bold">
             F
           </div>
           <div class="text-xl font-medium">ForgeBoard</div></div>
           <div class=" md:hidden items-center flex">
-    <button @click="HeaderTogglebtn" class="hover:bg-slate-400 px-3 rounded-lg py-1.5"><i :class="HeaderToggleMode?'fa-solid fa-xmark':'fa-solid fa-bars'"></i></button>
+    <button   :class="ThemeStore.isDark ?  'hover:bg-slate-800' :'hover:bg-slate-200'"  @click="HeaderTogglebtn" class=" px-3 rounded-lg py-1.5"><i :class="HeaderToggleMode?'fa-solid fa-xmark':'fa-solid fa-bars'"></i></button>
 </div>
         </div>
        
         <div v-if="HeaderToggleMode" class="flex gap-6  z-50 md:z-0  flex-col md:flex-row items-center">
-         <span class="text-center hover:text-slate-400 w-full md:w-auto cursor-pointer"><button @click="goTo('Features')">Features</button></span>
-          <span  class="hover:text-slate-400 text-center w-full md:w-auto cursor-pointer"><button @click="goTo('work')">How It Works</button></span>
-          <span  class="hover:text-slate-400 text-center w-full cursor-pointer md:w-auto">    <button @click="goTo('community')">Community</button></span>
+         <span class="text-center  w-full md:w-auto "><button @click="goTo('Features')" class="cursor-pointer">Features</button></span>
+          <span  class=" text-center w-full md:w-auto "><button @click="goTo('work')" class="cursor-pointer">How It Works</button></span>
+          <span  class=" text-center w-full  md:w-auto">    <button @click="goTo('community')" class="cursor-pointer">Community</button></span>
         </div>
         <div v-if="HeaderToggleMode" class="flex gap-2 mt-2 md:mt-0 z-50 md:z-0 flex-col md:flex-row items-center">
           <button
            :class="ThemeStore.isDark ?  'hover:bg-slate-800' :'hover:bg-slate-200'" 
-          @click="LoginPagebtn"  class="px-4  py-2 md:py-2 w-full md:w-auto  rounded-xl">
+          @click="LoginPagebtn"  class="px-4 cursor-pointer py-2 md:py-2 w-full md:w-auto  rounded-xl">
             <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in
           </button>
-          <button :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4   py-2 md:py-2 w-full md:w-auto bg-blue-500 font-medium hover:bg-blue-600 rounded-xl">
+          <button @click="SearchPage" :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4 cursor-pointer   py-2 md:py-2 w-full md:w-auto bg-emerald-500 font-medium hover:bg-emerald-600 rounded-xl">
             Get Started
           </button>
           <button
            :class="ThemeStore.isDark ?  'hover:bg-slate-800' :'hover:bg-slate-200'" 
-          @click="toggleMode" class="px-2  py-2 md:py-1.5 w-full md:w-auto rounded-xl ">
-            {{ isDark ? '🌙' : '☀️' }}
+          @click="toggleMode" class="px-2  py-2 md:py-1.5 cursor-pointer w-full md:w-auto rounded-xl ">
+            {{ ThemeStore.isDark ? '☀️' : '🌙' }}
           </button>
         </div>
       </nav>
@@ -45,8 +45,6 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { useThemeStore } from '../Store'
 import {router} from '../Router'
 import { useRouter, useRoute } from 'vue-router'
-
-
 const route = useRoute()
 
 const goTo = async (id) => {
@@ -91,5 +89,8 @@ function HeaderTogglebtn(){
 }
 function LoginPagebtn(){
   router.push('/login')
+}
+function SearchPage(){
+  router.push('/Search')
 }
 </script>

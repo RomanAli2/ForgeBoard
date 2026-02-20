@@ -6,7 +6,7 @@
         <i class="fa-solid fa-arrow-left ml-2"></i>Back
       </button>
       <div class="flex gap-3 items-center">
-        <div :class="ThemeStore.isDark? 'text-black':'text-white'" class="rounded-2xl bg-blue-500/95 px-2.5 py-1 text-2xl font-bold">F</div>
+        <div :class="ThemeStore.isDark? 'text-black':'text-white'" class="rounded-2xl bg-emerald-500/95 px-2.5 py-1 text-2xl font-bold">F</div>
         <div class="text-xl font-medium">ForgeBoard</div>
       </div>
     </div>
@@ -38,23 +38,23 @@
           <div class="w-full flex flex-col text-start">
             <label class="font-bold mb-1">Full Name</label>
             <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
-                   type="text" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-blue-500 mb-4 w-full" placeholder="John Doe">
+                   type="text" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-4 w-full" placeholder="John Doe">
 
             <label class="font-bold mb-1">Email</label>
             <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
-                   type="email" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-blue-500 mb-4 w-full" placeholder="you@example.com">
+                   type="email" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-4 w-full" placeholder="you@example.com">
 
             <label class="font-bold mb-1">Password</label>
             <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
-                   type="password" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-blue-500 mb-6 w-full" placeholder="Create a strong password">
+                   type="password" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-6 w-full" placeholder="Create a strong password">
 
-            <button class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg transition-all active:scale-[0.98]">
+            <button class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-all active:scale-[0.98]">
               <i class="fa-solid fa-user-plus mr-2"></i>Create Account
             </button>
 
             <div class="mt-6 text-center text-sm">
               <span>Already have an account? </span>
-              <RouterLink to="/login" class="text-blue-500 font-bold hover:underline">Sign in</RouterLink>
+              <RouterLink to="/login" class="text-emerald-500 font-bold hover:underline">Sign in</RouterLink>
             </div>
           </div>
         </div>

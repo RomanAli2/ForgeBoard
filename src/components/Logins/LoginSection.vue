@@ -19,7 +19,7 @@
         </div>
 
         <div class="flex flex-col items-center">
-          <button :class="ThemeStore.isDark ? 'bg-slate-800 text-white hover:bg-slate-900' : 'bg-slate-200 text-black hover:bg-slate-300'" 
+          <button @click="PageNotFoundBtn" :class="ThemeStore.isDark ? 'bg-slate-800 text-white hover:bg-slate-900' : 'bg-slate-200 text-black hover:bg-slate-300'" 
                   class="flex items-center justify-center rounded-xl py-3 w-full shadow-sm transition-all duration-200 mb-4">
             <div class="flex items-center gap-3">
               <svg class="w-5 h-5" viewBox="0 0 48 48">
@@ -63,5 +63,8 @@ import { router } from '../../Router';
 const ThemeStore=useThemeStore()
 function BackHome(){
     router.push('/')
+}
+function PageNotFoundBtn(){
+  router.push('/Error')
 }
 </script>

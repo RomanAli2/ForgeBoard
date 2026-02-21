@@ -20,7 +20,7 @@
         </div>
 
         <div class="flex flex-col items-center">
-          <button :class="ThemeStore.isDark ? 'bg-slate-800 text-white hover:bg-slate-900' : 'bg-slate-100 text-black hover:bg-slate-200'" 
+          <button @click="PageNotFoundBtn" :class="ThemeStore.isDark ? 'bg-slate-800 text-white hover:bg-slate-900' : 'bg-slate-100 text-black hover:bg-slate-200'" 
                   class="flex items-center justify-center rounded-xl py-3 w-full shadow-sm transition-all duration-200 mb-4 border border-transparent">
             <div class="flex items-center gap-3">
               <svg class="w-5 h-5" viewBox="0 0 48 48">
@@ -36,21 +36,21 @@
           <span class="text-slate-500 mb-4 text-sm">or register with email</span>
 
           <div class="w-full flex flex-col text-start">
-            <label class="font-bold mb-1">Full Name</label>
-            <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
-                   type="text" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-4 w-full" placeholder="John Doe">
+            <form action=""><label class="font-bold mb-1">Full Name</label>
+            <input v-model="UserName"  :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
+                   type="name" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-4 w-full" placeholder="John Doe" required="">
 
             <label class="font-bold mb-1">Email</label>
-            <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
+            <input required="" v-model="UserEmail" :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
                    type="email" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-4 w-full" placeholder="you@example.com">
 
             <label class="font-bold mb-1">Password</label>
-            <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
+            <input required="" v-model="UserPassword" :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-200'" 
                    type="password" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-6 w-full" placeholder="Create a strong password">
 
-            <button class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-all active:scale-[0.98]">
+            <button @click="LoginButton" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-all active:scale-[0.98]">
               <i class="fa-solid fa-user-plus mr-2"></i>Create Account
-            </button>
+            </button></form>
 
             <div class="mt-6 text-center text-sm">
               <span>Already have an account? </span>
@@ -64,10 +64,34 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { router } from '../../Router';
 import { useThemeStore } from '../../Store';
+import { User } from 'lucide-vue-next';
 const ThemeStore = useThemeStore();
 function BackHome(){
     router.push('/')
+}
+function PageNotFoundBtn(){
+  router.push('/Error')
+}
+const UserName=ref("")
+const UserEmail=ref("")
+const UserPassword=ref("")
+function LoginButton(){
+  if(UserEmail.value.trim()&&UserName.value.trim()&&UserPassword.value.trim()!=""){
+    if(UserPassword.value.length>8){
+localStorage.setItem('UserNameEntered',UserName.value)
+localStorage.setItem('UserEmail',UserEmail.value)
+router.push('/DashBoard')
+UserEmail.value=''
+UserName.value=''
+UserPassword.value=''
+    }
+    else{
+    return  alert("Password must be at least 8 characters long")
+    }
+  }
+ 
 }
 </script>

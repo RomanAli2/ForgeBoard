@@ -35,7 +35,7 @@ transition-all hover:-translate-y-1 duration-300
 w-full md:w-auto hover:shadow-[0_0_20px_rgba(16,185,129,0.8),0_0_40px_rgba(16,185,129,0.4)]">
             Start Contributing <i class="fa-solid fa-arrow-right ml-2"></i>
           </button>
-          <button class="px-8 py-4 cursor-pointer rounded-xl font-semibold bg-transparent border border-slate-300 hover:border-emerald-500 transition-all hover:-translate-y-1 w-full md:w-auto">
+          <button  @click="SearchPage"  class="px-8 py-4 cursor-pointer rounded-xl font-semibold bg-transparent border border-slate-300 hover:border-emerald-500 transition-all hover:-translate-y-1 w-full md:w-auto">
             Explore Projects
           </button>
         </div>

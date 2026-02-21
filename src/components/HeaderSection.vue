@@ -22,13 +22,16 @@
           <span  class=" text-center w-full  md:w-auto">    <button @click="goTo('community')" class="cursor-pointer">Community</button></span>
         </div>
         <div v-if="HeaderToggleMode" class="flex gap-2 mt-2 md:mt-0 z-50 md:z-0 flex-col md:flex-row items-center">
-          <button
+          <button v-if="LocalStorageCheck===false"
            :class="ThemeStore.isDark ?  'hover:bg-slate-800' :'hover:bg-slate-200'" 
           @click="LoginPagebtn"  class="px-4 cursor-pointer py-2 md:py-2 w-full md:w-auto  rounded-xl">
             <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in
           </button>
-          <button @click="SearchPage" :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4 cursor-pointer   py-2 md:py-2 w-full md:w-auto bg-emerald-500 font-medium hover:bg-emerald-600 rounded-xl">
-            Get Started
+          <button v-if="LocalStorageCheck" @click="DashBoardbtn" :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4 cursor-pointer   py-2 md:py-2 w-full md:w-auto bg-emerald-500 font-medium hover:bg-emerald-600 rounded-xl">
+         DashBoard
+          </button>
+           <button v-else  @click="SearchPage" :class="ThemeStore.isDark? ' text-black':' text-white'" class="px-4 cursor-pointer   py-2 md:py-2 w-full md:w-auto bg-emerald-500 font-medium hover:bg-emerald-600 rounded-xl">
+        Get Started
           </button>
           <button
            :class="ThemeStore.isDark ?  'hover:bg-slate-800' :'hover:bg-slate-200'" 
@@ -92,5 +95,12 @@ function LoginPagebtn(){
 }
 function SearchPage(){
   router.push('/Search')
+}
+const LocalStorageCheck=ref(false)
+if(localStorage.length>0){
+  LocalStorageCheck.value=true
+}
+function DashBoardbtn(){
+  router.push('/dashBoard')
 }
 </script>

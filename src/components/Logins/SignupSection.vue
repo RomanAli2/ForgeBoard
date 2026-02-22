@@ -83,7 +83,7 @@ function LoginButton(){
     if(UserPassword.value.length>8){
 localStorage.setItem('UserNameEntered',UserName.value)
 localStorage.setItem('UserEmail',UserEmail.value)
-router.push('/DashBoard')
+router.push('/dashboard/OverviewPage')
 UserEmail.value=''
 UserName.value=''
 UserPassword.value=''

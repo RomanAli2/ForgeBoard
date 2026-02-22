@@ -36,14 +36,14 @@
 
           <div class="w-full flex flex-col text-start">
             <label class="font-bold mb-1">Email</label>
-            <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-200 border-slate-200'" 
+            <input v-model="UserEmail" :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-200 border-slate-200'" 
                    type="email" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-4 w-full" placeholder="you@example.com">
 
             <label class="font-bold mb-1">Password</label>
             <input :class="ThemeStore.isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-200 border-slate-200'" 
                    type="password" class="rounded-xl py-3 px-4 border focus:outline-none focus:ring-2 ring-emerald-500 mb-6 w-full" placeholder="Password">
 
-            <button class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-colors">
+            <button @click="LoginButton" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-colors">
               <i class="fa-regular fa-envelope mr-2"></i>Sign in
             </button>
 
@@ -60,11 +60,16 @@
 <script setup>
 import { useThemeStore } from '../../Store';
 import { router } from '../../Router';
+import { ref } from 'vue';
 const ThemeStore=useThemeStore()
 function BackHome(){
     router.push('/')
 }
 function PageNotFoundBtn(){
   router.push('/Error')
+}
+const UserEmail=ref("")
+function LoginButton(){
+  alert(' Entered Email is Invalid Please Signup')
 }
 </script>

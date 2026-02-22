@@ -101,6 +101,6 @@ if(localStorage.length>0){
   LocalStorageCheck.value=true
 }
 function DashBoardbtn(){
-  router.push('/dashBoard')
+  router.push('/Dashboard')
 }
 </script>
